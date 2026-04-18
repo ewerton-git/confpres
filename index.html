@@ -18,19 +18,34 @@
   
 </head>
 
+<!-- BLOQUEIO DE ACESSO -->
 <body>
+  <div id="bloqueio" class="bloqueio">
+  <div class="modal-content" style="text-align:center;">
+    <h2>Convite Exclusivo</h2>
+    <p>Digite seu código para acessar</p>
+
+    <input type="text" id="codigoInput" placeholder="Ex: SJG001" class="input-codigo">
+
+    <br><br>
+
+    <button class="button" onclick="validarCodigo()">Entrar</button>
+
+    <p id="erroCodigo" style="color:red; margin-top:10px;"></p>
+  </div>
+</div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container-inicio">
-        <img class="subLogo" src="img/IMG_HOR.webp" alt="Logo do São João Garden Hotel" class="logo">
-        <div class="event-info">
-            <div class="info-box">📅 25 de Maio</div>
-             <div class="info-box">⏰ 19:00</div>
-            <a href="https://www.bing.com/maps/search?FORM=HDRSC6&q=garden+hotel+campina+grande&cp=-7.235798%7E-35.862701&lvl=16&style=r"  target="_blank" class="info-box">🏩 Garden Hotel e Resort </a>
-        </div>
-
-        <a href="javascript:void(0)" class="button" onclick="abrirModal()">Confirmar Presença</a>
+      <img class="subLogo" src="img/IMG_HOR.webp" alt="Logo  do São João Garden Hotel" class="logo">
+      <div class="event-info">
+        <div class="info-box">📅 25 de Maio</div>
+        <div class="info-box">⏰ 19:00</div>
+        <a href="https://www.bing.com/maps/search?FORM=HDRSC6&q=garden+hotel+campina+grande&cp=-7.235798%7E-35.862701&lvl=16&style=r"  target="_blank" class="info-box">🏩 Garden Hotel e Resort </a>
+      </div>
+      
+      <a href="javascript:void(0)" class="button" onclick="abrirModal()" id="btnConfirmar" style="display:none;">Confirmar Presença</a>
     </div>
     
   </section>

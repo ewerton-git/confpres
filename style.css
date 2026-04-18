@@ -79,6 +79,21 @@ iframe {
   font-size: 0.9rem;
   color: #fff;
 }
+.codigo-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.codigo-box input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+  text-align: center;
+}
 
 .button {
   display: flex;
@@ -152,4 +167,27 @@ iframe {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/** Estilos para o bloqueio de tela */
+.bloqueio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-codigo {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  width: 200px;
 }
