@@ -4,6 +4,10 @@ body {
   color: rgb(7, 0, 0);
   background-image: url("img/fundo.webp");
   background-size: cover;
+  overflow: hidden;
+}
+body.liberado {
+  overflow: auto;
 }
 .container-inicio {
   display: flex;

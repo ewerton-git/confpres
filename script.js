@@ -23,7 +23,7 @@ function mostrarFormulario() {
 }
 
 window.onload = function () {
-  const liberado = localStorage.getItem("acessoLiberado");
+  const liberado = sessionStorage.getItem("acessoLiberado");
 
   if (liberado === "true") {
     document.getElementById("bloqueio").style.display = "none";
@@ -55,7 +55,7 @@ async function validarCodigo() {
     const result = await response.json();
 
     if (result.status === "ok") {
-      localStorage.setItem("acessoLiberado", "true");
+      sessionStorage.setItem("acessoLiberado", "true");
 
       // opcional: salvar acompanhantes
       localStorage.setItem("acompanhantes", result.acompanhantes);
