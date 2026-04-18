@@ -95,7 +95,7 @@ iframe {
   text-align: center;
 }
 
-.button {
+.btnConf {
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -108,7 +108,7 @@ iframe {
   transition: 0.3s;
 }
 
-.button:hover {
+.btnConf:hover {
   background: #ffc107;
 }
 .info-box:hover {
