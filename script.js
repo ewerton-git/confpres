@@ -53,7 +53,7 @@ function validarCodigo() {
   const script = document.createElement("script");
   script.id = "jsonpScript";
 
-  script.src = `https://script.google.com/macros/s/AKfycbzEZflac6bzktNVafHfWWtsKMtd-e6iis83_tgEeGTHE1uqUjoOma8-vUce7EFV8bsL/exec?codigo=${codigo}&callback=callbackValidacao`;
+  script.src = `https://script.google.com/macros/s/AKfycbzK3cUdEEl7qrJw53E3bLZ98R5YqUB8e80tykyvteAbMyk523wVjQD6XEWe9XwD4jrd/exec?codigo=${codigo}&callback=callbackValidacao`;
 
   document.body.appendChild(script);
 }
