@@ -33,11 +33,12 @@ window.onload = function () {
 };
 
 // lista de códigos (exemplo)
-async function validarCodigo() {
+function validarCodigo() {
   const codigo = document
     .getElementById("codigoInput")
     .value.trim()
     .toUpperCase();
+
   const erro = document.getElementById("erroCodigo");
 
   if (!codigo) {
@@ -45,30 +46,28 @@ async function validarCodigo() {
     return;
   }
 
-  try {
-    const response = await fetch(
-      `https://script.google.com/macros/s/AKfycbxbQgnZpt7sNevVN1A-bLfkQ9x1NTucemgq_2B_OQ6ijWEFvGtKLRahpK99TKg2GZWq/exec?codigo=${codigo}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
+  // Remove script anterior (evita duplicação)
+  const antigo = document.getElementById("jsonpScript");
+  if (antigo) antigo.remove();
 
-    const text = await response.text();
-    const result = JSON.parse(text);
+  const script = document.createElement("script");
+  script.id = "jsonpScript";
 
-    if (result.status === "ok") {
-      sessionStorage.setItem("acessoLiberado", "true");
-      document.getElementById("bloqueio").style.display = "none";
-    } else if (result.status === "usado") {
-      erro.innerText = "Esse convite já foi utilizado!";
-    } else {
-      erro.innerText = "Código inválido!";
-    }
-  } catch (err) {
-    console.error(err);
-    erro.innerText = "Erro ao validar. Verifique conexão ou script.";
+  script.src = `https://script.google.com/macros/s/AKfycbzEZflac6bzktNVafHfWWtsKMtd-e6iis83_tgEeGTHE1uqUjoOma8-vUce7EFV8bsL/exec?codigo=${codigo}&callback=callbackValidacao`;
+
+  document.body.appendChild(script);
+}
+
+function callbackValidacao(result) {
+  const erro = document.getElementById("erroCodigo");
+
+  if (result.status === "ok") {
+    sessionStorage.setItem("acessoLiberado", "true");
+    document.getElementById("bloqueio").style.display = "none";
+    document.body.classList.add("liberado");
+  } else if (result.status === "usado") {
+    erro.innerText = "Esse convite já foi utilizado!";
+  } else {
+    erro.innerText = "Código inválido!";
   }
 }
