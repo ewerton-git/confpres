@@ -1,3 +1,5 @@
+console.log("SCRIPT CARREGOU");
+
 function abrirModal() {
   document.getElementById("modalForm").style.display = "block";
 }
@@ -9,7 +11,7 @@ function fecharModal() {
 // fechar clicando fora
 window.onclick = function (event) {
   const modal = document.getElementById("modalForm");
-  if (event.target === modal) {
+  if (modal.style.display === "block" && event.target === modal) {
     modal.style.display = "none";
   }
 };
@@ -45,21 +47,20 @@ async function validarCodigo() {
 
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxO6VKwWOiB5y3FKMX0QAOW9l6uI-xKTVM113tXMQwHpvK-R0TaMxTG_IFP6-D4mZk0/exec",
+      `https://script.google.com/macros/s/AKfycbxbQgnZpt7sNevVN1A-bLfkQ9x1NTucemgq_2B_OQ6ijWEFvGtKLRahpK99TKg2GZWq/exec?codigo=${codigo}`,
       {
-        method: "POST",
-        body: JSON.stringify({ codigo: codigo }),
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
     );
 
-    const result = await response.json();
+    const text = await response.text();
+    const result = JSON.parse(text);
 
     if (result.status === "ok") {
       sessionStorage.setItem("acessoLiberado", "true");
-
-      // opcional: salvar acompanhantes
-      localStorage.setItem("acompanhantes", result.acompanhantes);
-
       document.getElementById("bloqueio").style.display = "none";
     } else if (result.status === "usado") {
       erro.innerText = "Esse convite já foi utilizado!";
@@ -67,6 +68,7 @@ async function validarCodigo() {
       erro.innerText = "Código inválido!";
     }
   } catch (err) {
-    erro.innerText = "Erro ao validar. Tente novamente.";
+    console.error(err);
+    erro.innerText = "Erro ao validar. Verifique conexão ou script.";
   }
 }

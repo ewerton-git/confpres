@@ -1,86 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      type="image/webp"
-      href="img/IMG_LOGO.webp"
+      href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
     />
-  <title>São João Garden Hotel</title>
-   <script src="script.js"></script>
-  
-</head>
 
-<!-- BLOQUEIO DE ACESSO -->
-<body>
-  <div id="bloqueio" class="bloqueio">
-  <div class="modal-content" style="text-align:center;">
-    <h2>Convite Exclusivo</h2>
-    <p>Digite seu código para acessar</p>
+    <link rel="icon" type="image/webp" href="img/IMG_LOGO.webp" />
+    <title>São João Garden Hotel</title>
+    <script src="script.js" defer></script>
+  </head>
 
-    <input type="text" id="codigoInput" placeholder="" class="input-codigo">
+  <!-- BLOQUEIO DE ACESSO -->
+  <body>
+    <div id="bloqueio" class="bloqueio">
+      <div class="modal-content" style="text-align: center">
+        <h2>Convite Exclusivo</h2>
+        <p>Digite seu código para acessar</p>
 
-    <br><br>
+        <input
+          type="text"
+          id="codigoInput"
+          placeholder=""
+          class="input-codigo"
+        />
 
-    <button class="button" onclick="validarCodigo()">Entrar</button>
+        <br /><br />
 
-    <p id="erroCodigo" style="color:red; margin-top:10px;"></p>
-  </div>
-</div>
+        <button class="button" onclick="validarCodigo()">Entrar</button>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container-inicio">
-      <img class="subLogo" src="img/IMG_HOR.webp" alt="Logo  do São João Garden Hotel" class="logo">
-      <div class="event-info">
-        <div class="info-box">📅 25 de Maio</div>
-        <div class="info-box">⏰ 19:00</div>
-        <a href="https://www.bing.com/maps/search?FORM=HDRSC6&q=garden+hotel+campina+grande&cp=-7.235798%7E-35.862701&lvl=16&style=r"  target="_blank" class="info-box">🏩 Garden Hotel e Resort </a>
+        <p id="erroCodigo" style="color: red; margin-top: 10px"></p>
       </div>
-      
-      <a href="javascript:void(0)" class="btnConf" onclick="abrirModal()" id="btnConfirmar" >Confirmar Presença</a>
     </div>
-    
-  </section>
 
-  <!-- FORMS -->
-  <div class="container" id="formulario">
-    <div class="card">
-      <h2 style="text-align:center; color: #FFFF
-      ;" >Preencha seus dados</h2>
-
-      <!-- LINK FORMS -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?embedded=true" width="640" height="799" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-      </iframe>
-
-    </div>
-  </div>
-  
-    <div id="modalForm" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?embedded=true">
-            </iframe>
-
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container-inicio">
+        <img
+          class="subLogo"
+          src="img/IMG_HOR.webp"
+          alt="Logo  do São João Garden Hotel"
+          class="logo"
+        />
+        <div class="event-info">
+          <div class="info-box">📅 25 de Maio</div>
+          <div class="info-box">⏰ 19:00</div>
+          <a
+            href="https://www.bing.com/maps/search?FORM=HDRSC6&q=garden+hotel+campina+grande&cp=-7.235798%7E-35.862701&lvl=16&style=r"
+            target="_blank"
+            class="info-box"
+            >🏩 Garden Hotel e Resort
+          </a>
         </div>
+
+        <a
+          href="javascript:void(0)"
+          class="btnConf"
+          onclick="abrirModal()"
+          id="btnConfirmar"
+          >Confirmar Presença</a
+        >
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <div class="container" id="formulario">
+      <div class="card">
+        <h2 style="text-align: center; color: #ffff">Preencha seus dados</h2>
+
+        <!-- LINK FORMS -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?embedded=true"
+          width="640"
+          height="799"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          >Carregando…
+        </iframe>
+      </div>
     </div>
 
+    <div id="modalForm" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="fecharModal()">&times;</span>
 
-  <!-- FOOTER -->
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?embedded=true"
+        >
+        </iframe>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
     <div class="footer">
-        <a  href="https://api.whatsapp.com/send?phone=5583993918413" target="_blank">
-         © 2026 - Ewerton Pereira | Todos os direitos reservados
-        </a>
+      <a
+        href="https://api.whatsapp.com/send?phone=5583993918413"
+        target="_blank"
+      >
+        © 2026 - Ewerton Pereira | Todos os direitos reservados
+      </a>
     </div>
-
-</body>
-
+  </body>
 </html>
