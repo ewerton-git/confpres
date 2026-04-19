@@ -46,12 +46,19 @@ function validarCodigo() {
     return;
   }
 
-  // Remove script anterior (evita duplicação)
   const antigo = document.getElementById("jsonpScript");
   if (antigo) antigo.remove();
 
   const script = document.createElement("script");
   script.id = "jsonpScript";
+
+  script.onload = () => {
+    console.log("Script carregado!");
+  };
+
+  script.onerror = () => {
+    erro.innerText = "Erro ao conectar com servidor!";
+  };
 
   script.src = `https://script.google.com/macros/s/AKfycbzK3cUdEEl7qrJw53E3bLZ98R5YqUB8e80tykyvteAbMyk523wVjQD6XEWe9XwD4jrd/exec?codigo=${codigo}&callback=callbackValidacao`;
 
@@ -71,3 +78,17 @@ function callbackValidacao(result) {
     erro.innerText = "Código inválido!";
   }
 }
+
+window.callbackValidacao = function (result) {
+  const erro = document.getElementById("erroCodigo");
+
+  if (result.status === "ok") {
+    sessionStorage.setItem("acessoLiberado", "true");
+    document.getElementById("bloqueio").style.display = "none";
+    document.body.classList.add("liberado");
+  } else if (result.status === "usado") {
+    erro.innerText = "Esse convite já foi utilizado!";
+  } else {
+    erro.innerText = "Código inválido!";
+  }
+};
