@@ -135,8 +135,18 @@ iframe {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
-
 .modal-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 90%;
+  max-width: 800px;
+  margin: 5% auto;
+  padding: 20px;
+  animation: fadeIn 0.6s ease;
+}
+/*.modal-content {
   position: relative;
   background: white;
   margin: 5% auto;
@@ -145,7 +155,7 @@ iframe {
   max-width: 800px;
   border-radius: 16px;
   animation: fadeIn 0.4s ease;
-}
+}*/
 
 .modal iframe {
   width: 100%;
@@ -180,7 +190,7 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 9999;
 
   display: flex;
@@ -189,9 +199,18 @@ iframe {
 }
 
 .input-codigo {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid #e43f0b;
   text-align: center;
-  width: 200px;
+  width: 220px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-codigo:focus {
+  border-color: #e43f0b;
+  box-shadow: 0 0 8px rgba(228, 63, 11, 0.5);
 }
