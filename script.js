@@ -1,6 +1,20 @@
 console.log("SCRIPT CARREGOU");
 
 function abrirModal() {
+  const codigo = document
+    .getElementById("codigoInput")
+    .value.trim()
+    .toUpperCase();
+
+  if (!codigo) {
+    alert("Digite seu código primeiro!");
+    return;
+  }
+
+  const iframe = document.querySelector("#modalForm iframe");
+
+  iframe.src = `https://docs.google.com/forms/d/e/SEU_FORM_ID/viewform?entry.123456789=${codigo}`;
+
   document.getElementById("modalForm").style.display = "block";
 }
 
