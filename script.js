@@ -1,19 +1,21 @@
 console.log("SCRIPT CARREGOU");
 
 function abrirModal() {
-  const codigo = document
-    .getElementById("codigoInput")
-    .value.trim()
-    .toUpperCase();
+  const codigo = sessionStorage.getItem("codigoUsuario");
 
   if (!codigo) {
     alert("Digite seu código primeiro!");
     return;
   }
 
-  const iframe = document.querySelector("#modalForm iframe");
+  const iframe = document.getElementById("formFrame");
 
-  iframe.src = `https://docs.google.com/forms/d/e/SEU_FORM_ID/viewform?entry.123456789=${codigo}`;
+  if (!iframe) {
+    alert("Erro: iframe não encontrado");
+    return;
+  }
+
+  iframe.src = `https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?usp=pp_url&entry.335578477=${codigo}`;
 
   document.getElementById("modalForm").style.display = "block";
 }
@@ -39,10 +41,13 @@ function mostrarFormulario() {
 }
 
 window.onload = function () {
-  const liberado = sessionStorage.getItem("acessoLiberado");
+  const acesso = sessionStorage.getItem("acessoLiberado");
+  const codigo = localStorage.getItem("codigoUsuario");
 
-  if (liberado === "true") {
+  if (acesso === "true" && codigo) {
     document.getElementById("bloqueio").style.display = "none";
+  } else {
+    sessionStorage.clear(); // limpa qualquer acesso anterior para evitar problemas
   }
 };
 
@@ -79,29 +84,18 @@ function validarCodigo() {
   document.body.appendChild(script);
 }
 
-function callbackValidacao(result) {
-  const erro = document.getElementById("erroCodigo");
-
-  if (result.status === "ok") {
-    sessionStorage.setItem("acessoLiberado", "true");
-    document.getElementById("bloqueio").style.display = "none";
-    document.body.classList.add("liberado");
-  } else if (result.status === "usado") {
-    erro.innerText = "Esse convite já foi utilizado!";
-  } else {
-    erro.innerText = "Código inválido!";
-  }
-}
-
 window.callbackValidacao = function (result) {
   const erro = document.getElementById("erroCodigo");
+  const codigoDigitado = document.getElementById("codigoInput").value;
 
   if (result.status === "ok") {
     sessionStorage.setItem("acessoLiberado", "true");
+    sessionStorage.setItem("codigoUsuario", codigoDigitado); // salva o código do usuário para uso futuro
+
     document.getElementById("bloqueio").style.display = "none";
     document.body.classList.add("liberado");
   } else if (result.status === "usado") {
-    erro.innerText = "Esse convite já foi utilizado!";
+    erro.innerText = "Convite já utilizado!";
   } else {
     erro.innerText = "Código inválido!";
   }
