@@ -42,7 +42,7 @@ function mostrarFormulario() {
 
 window.onload = function () {
   const acesso = sessionStorage.getItem("acessoLiberado");
-  const codigo = localStorage.getItem("codigoUsuario");
+  const codigo = sessionStorage.getItem("codigoUsuario");
 
   if (acesso === "true" && codigo) {
     document.getElementById("bloqueio").style.display = "none";
