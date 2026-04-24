@@ -79,7 +79,7 @@ function validarCodigo() {
     erro.innerText = "Erro ao conectar com servidor!";
   };
 
-  script.src = `https://script.google.com/macros/s/AKfycbzK3cUdEEl7qrJw53E3bLZ98R5YqUB8e80tykyvteAbMyk523wVjQD6XEWe9XwD4jrd/exec?codigo=${codigo}&callback=callbackValidacao`;
+  script.src = `https://script.google.com/macros/s/AKfycbz_3GKu6TX-qc96UnkyZe7n8pGml_snO6vvD1yas0o4inCV27HqWPew5cZsp0W67xYQ/exec?codigo=${codigo}&callback=callbackValidacao`;
 
   document.body.appendChild(script);
 }
