@@ -8,12 +8,10 @@ function abrirModal() {
     return;
   }
 
-  const iframe = document.getElementById("formFrame");
+  // marca como "em uso" no navegador
+  sessionStorage.setItem("codigoUsadoLocal", "true");
 
-  if (!iframe) {
-    alert("Erro: iframe não encontrado");
-    return;
-  }
+  const iframe = document.getElementById("formFrame");
 
   iframe.src = `https://docs.google.com/forms/d/e/1FAIpQLSfiRWNlOwYRm4AuqKZOtq2G86j2ey-VVPlBOb8VC8QVZfPlrA/viewform?usp=pp_url&entry.335578477=${codigo}`;
 
@@ -98,5 +96,19 @@ window.callbackValidacao = function (result) {
     erro.innerText = "Convite já utilizado!";
   } else {
     erro.innerText = "Código inválido!";
+  }
+
+  if (result.status === "ok") {
+    // trava para evitar reuso no mesmo navegador
+    if (sessionStorage.getItem("codigoUsadoLocal")) {
+      erro.innerText = "Este código já foi usado neste dispositivo!";
+      return;
+    }
+
+    sessionStorage.setItem("acessoLiberado", "true");
+    sessionStorage.setItem("codigoUsuario", codigoDigitado);
+
+    document.getElementById("bloqueio").style.display = "none";
+    document.body.classList.add("liberado");
   }
 };
